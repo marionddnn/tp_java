@@ -3,7 +3,7 @@ package rpg_package;
 public class epee extends weapons {
 	String typeDegats;
 	epee(String nom, int prix, int degats, String td){
-		super(nom, type="épée", prix, degats);
+		super(nom, "epee", prix, degats);
 		this.typeDegats = td;
 		
 	}

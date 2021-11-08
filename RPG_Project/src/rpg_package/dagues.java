@@ -4,7 +4,7 @@ public class dagues extends weapons {
 	String typeDegats;
 	
 	dagues(String nom, int prix, int degats, String td){
-		super(nom, type="dagues", prix, degats);
+		super(nom, "dagues", prix, degats);
 		this.typeDegats = td;
 	}
 }

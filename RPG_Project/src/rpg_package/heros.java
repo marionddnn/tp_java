@@ -10,6 +10,7 @@ public class heros extends Caste {
 	private String classe;
 	protected ArrayList<weapons> weapons;
 	int money = 20;
+	private int turn = 0;
 
 	heros(String n, String t, ArrayList<weapons> armes, int p, String classe, int money) {
 		super(n, t, p);
@@ -43,13 +44,20 @@ public class heros extends Caste {
 		this.weapons.add(weapon);
 	}
 	
-	public String afficheNom() {
-		return "Voici votre nom : " + this.nom;
+	public void afficheNom() {
+		System.out.println("Voici votre nom : " + this.nom);
 	}
 
-	public String afficheClasse() {
-		return "Voici votre classe : " + this.classe;
+	public void afficheClasse() {
+		System.out.println("Voici votre classe : " + this.classe);
 		
+	}
+	
+	public void afficheArmes() {
+		System.out.println("Voici la liste de vos armes : ");
+		for(int i = 0; i < this.weapons.size(); i++) {
+			System.out.println(i + " / " + this.weapons.get(i).nom);
+		}
 	}
 
 	public int displayArmes() {
@@ -58,14 +66,20 @@ public class heros extends Caste {
 			System.out.println(i + " / " + this.weapons.get(i).nom);
 		}
 		
-		System.out.println("choix d'une arme");
 		String nbarme = sc.nextLine();
 		
 		return SetDegats(nbarme);
 	}
 
 	int SetDegats(String nbarme) {
-		return this.weapons.get(Integer.parseInt(nbarme)).degats;
+		weapons armeChoisie = this.weapons.get(Integer.parseInt(nbarme));
+		boolean condition = armeChoisie.compareType(this.typeArme);
+		if(condition) {
+			return armeChoisie.degats * 2;
+		}
+		else {
+			return armeChoisie.degats;
+		}
 	}
 		
 	public boolean verifyPv() {
@@ -76,9 +90,34 @@ public class heros extends Caste {
 			return false;
 		}
 	}
-		
+
+	public boolean buyWeapon(int price) {
+		if(this.money >= price) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public void addTurn() {
+		this.turn ++;
+	}	
+	
+	public boolean VerifyTurn() {
+		if(this.turn < 5) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public void afficheMoney() {
+		System.out.println("Voici votre argent : " + this.money);
 		
 	}
+}
 	
 	
 	

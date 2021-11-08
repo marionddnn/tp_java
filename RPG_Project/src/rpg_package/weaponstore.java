@@ -17,14 +17,20 @@ public class weaponstore {
 	}
 	
 	
-	public String setChoice() {
+	public weapons setChoice() {
 		Scanner sc = new Scanner(System.in);
+		System.out.println("Quelle arme choisissez-vous ?");
 		String choice = sc.nextLine();
 		for(int i=0; i< this.armes.size(); i++) {
 			weapons arme = this.armes.get(Integer.parseInt(choice));
-			return arme.nom;
+			return arme;
 		}
-		return "erreur";
+		return null;
+	}
+
+	public void buy(weapons achat) {
+		this.armes.remove(achat);
+		System.out.println("Vous avez acheté cette arme :" + achat.nom + "   ");
 	}
 
 }

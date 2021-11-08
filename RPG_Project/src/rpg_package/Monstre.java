@@ -26,6 +26,11 @@ public class Monstre extends destructible{
 		
 	}
 	
+	public int degats() {
+		int degat = this.attack;
+		return degat;
+	}
+	
 	public void init() {
 		System.out.println(this.nom + " vous attaque !!");
 	}
